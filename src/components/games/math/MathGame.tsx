@@ -96,12 +96,7 @@ const MathGame: React.FC<MathGameProps> = ({ onFinish }) => {
       stats={{
         score,
         level: currentLevel,
-        timeLeft: timeLeft / 1000, // GameShell expects seconds usually? No, it uses Math.ceil(stats.timeLeft). If I pass ms, it will show huge number.
-        // Wait, GameShell render: {toPersianNum(Math.ceil(stats.timeLeft))}
-        // If I pass 300000, it shows 300000.
-        // Usually timer is in seconds.
-        // My hook uses ms.
-        // I should pass seconds.
+        timeLeft: Math.ceil(timeLeft / 1000),
         combo: streak
       }}
       gameState={shellState}
